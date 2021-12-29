@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+		</style>
+	</head>
+	<body>
+		<script type="script" src="js/three.js"></script>
+		<script type="script" src="js/FBXLoader.js"></script>
+		<script>
+            // -------------- CUBE --------------
+			// // Our Javascript will go here.
+
+            // // You need this three
+            // // scene
+            // // camera
+            // // renderer
+            // const scene = new THREE.Scene();
+            // // PerspectiveCamera is the camera type
+            // // 75 => field of view (degree)
+            // //window.innerWidth / window.innerHeight => aspect ratio 
+            // // 0.1 => near
+            // // 1000 => far from camera
+            // const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+            // // work with webGL
+            // // and for old browser they have fallbacks
+            // const renderer = new THREE.WebGLRenderer();
+            // renderer.setSize( window.innerWidth, window.innerHeight );
+            // document.body.appendChild( renderer.domElement );
+
+
+            // const geometry = new THREE.BoxGeometry();
+            // const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+            // const cube = new THREE.Mesh( geometry, material );
+            // scene.add( cube );
+
+            // camera.position.z = 5;
+
+
+            // function animate() {
+            //     requestAnimationFrame( animate );
+
+            //     cube.rotation.x += 0.01;
+            //     cube.rotation.y += 0.01;
+
+            //     renderer.render( scene, camera );
+            // };
+
+            // animate();
+
+
+            // -------------- Line --------------
+            // const renderer = new THREE.WebGLRenderer();
+            // renderer.setSize( window.innerWidth, window.innerHeight );
+            // document.body.appendChild( renderer.domElement );
+
+            // const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
+            // camera.position.set( 0, 0, 100 );
+            // camera.lookAt( 0, 0, 0 );
+
+            // const scene = new THREE.Scene();
+
+            // const material = new THREE.LineBasicMaterial( { color: 0x0000ff } );
+            // const points = [];
+            // points.push( new THREE.Vector3( -10, 0, 0 ) );
+            // points.push( new THREE.Vector3( 0, 10, 0 ) );
+            // points.push( new THREE.Vector3( 10, 0, 0 ) );
+            // points.push( new THREE.Vector3( 10, -10, 0 ) );
+            // points.push( new THREE.Vector3( -10, -10, 0 ) );
+            // points.push( new THREE.Vector3( -10, 0, 0 ) );
+
+
+            // const geometry = new THREE.BufferGeometry().setFromPoints( points );
+
+            // const line = new THREE.Line( geometry, material );
+
+            // scene.add( line );
+            // renderer.render( scene, camera );
+
+            // function animate() {
+            //     requestAnimationFrame( animate );
+
+            //     // line.rotation.x += 0.01;
+            //     line.rotation.y += 0.01;
+
+            //     renderer.render( scene, camera );
+            // };
+
+            // animate();
+
+            // -------------- 3D models --------------
+            // import * as THREE from './js/three.js';
+            // import { FBXLoader } from './js/FBXLoader.js';
+            const loader = new FBXLoader();
+            loader.load( 'Laptop.fbx', function ( gltf ) {
+
+                const scene = new THREE.Scene();
+                scene.add( gltf.scene );
+
+            }, undefined, function ( error ) {
+
+            console.error( error );
+
+            } );
+		</script>
+	</body>
+</html>
